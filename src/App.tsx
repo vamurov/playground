@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import styled from "styled-components";
+import {SampleContainer, StoreAwareRouter} from '@components'
+import {Show} from "@components";
+
+interface Props {
+    colour: string;
+}
+
+export const Container = styled.div<Props>`
+  color: ${props => props.colour}
+`
 
 const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div style={{height: "100%", width: "100%"}} className="App">
+            <StoreAwareRouter>
+                <Show if={true}>
+                    <SampleContainer/>
+                </Show>
+            </StoreAwareRouter>
+        </div>
+    );
 }
 
 export default App;
